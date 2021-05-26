@@ -1,0 +1,1 @@
+# go-labs - Biblioteca utilizada no curso de Go da 4linux
