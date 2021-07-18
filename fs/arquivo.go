@@ -1,7 +1,8 @@
-//
-package sistema
+package fs
 
 import (
+	"bufio"
+	"errors"
 	"fmt"
 	"os"
 )
@@ -32,11 +33,28 @@ func AbrirArquivo(caminhoArquivo string) (arquivo *os.File, err error) {
 	return arquivo, nil
 }
 
-
 // Fecha um arquivo aberto no sistema. Esta funcao e protegida
 // caso o arquivo passado for `nulo` (nil).
 func FecharArquivo(arquivo *os.File) {
 	if arquivo != nil {
 		arquivo.Close()
 	}
+}
+
+// Realiza a leitura de um arquivo
+func LerArquivo(caminhoArquivo string) (linhas []string, err error) {
+	arquivo, err := AbrirArquivo(caminhoArquivo)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Erro ao abrir arquivo '%s': %v\n", caminhoArquivo, err)
+		return linhas, errors.New("erro ao abrir arquivo")
+	}
+
+	defer FecharArquivo(arquivo)
+
+	scanner := bufio.NewScanner(arquivo)
+	for scanner.Scan() {
+		linhas = append(linhas, scanner.Text())
+	}
+
+	return linhas, nil
 }
