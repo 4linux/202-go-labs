@@ -1,3 +1,3 @@
-module github.com/4linux/go-labs
+module github.com/raffs/go-labs
 
 go 1.16

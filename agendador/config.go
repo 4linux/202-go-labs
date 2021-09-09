@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/4linux/go-labs/fs"
+	"github.com/raffs/go-labs/fs"
 )
 
 const (

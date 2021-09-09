@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/4linux/go-labs/sistema"
+	"github.com/raffs/go-labs/sistema"
 )
 
 func main() {
